@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import React, { useContext } from "react";
 import "../assets/css/hover.css";
-import { MyContext } from "./context/MyContext";
+import { MyContext } from "./context/MyContext.jsx";
 import { useNavigate } from "react-router-dom";
-import Paginacion from "./Paginacion";
-import Filtros from "./Filtros";
+import Paginacion from "./Paginacion.jsx";
+import Filtros from "./Filtros.jsx";
 
 const GrillaLibros = (props) => {
   const {

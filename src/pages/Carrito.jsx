@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Header from "../componentes/Header";
-import Footer from "../componentes/Footer";
+import Header from "../componentes/Header.jsx";
+import Footer from "../componentes/Footer.jsx";
 
 const Carrito = (props) => {
   return (

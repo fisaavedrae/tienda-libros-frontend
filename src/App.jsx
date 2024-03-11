@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { MyContext } from "./componentes/context/MyContext";
+import { MyContext } from "./componentes/context/MyContext.jsx";
 import "./App.css";
 
-import HomePage from "./pages/Home";
-import Carrito from "./pages/Carrito";
-import Pago from "./pages/Pago";
-import DetalleLibro from "./pages/DetalleLibro";
-import CerrarSesion from "./pages/CerrarSesion";
-import Registro from "./pages/Registro";
-import Login from "./pages/Login";
-import Ordenes from "./pages/Ordenes";
-import Admin from "./pages/Admin";
+import HomePage from "./pages/Home.jsx";
+import Carrito from "./pages/Carrito.jsx";
+import Pago from "./pages/Pago.jsx";
+import DetalleLibro from "./pages/DetalleLibro.jsx";
+import CerrarSesion from "./pages/CerrarSesion.jsx";
+import Registro from "./pages/Registro.jsx";
+import Login from "./pages/Login.jsx";
+import Ordenes from "./pages/Ordenes.jsx";
+import Admin from "./pages/Admin.jsx";
 
 function App() {
   const [total, setTotal] = useState(0);

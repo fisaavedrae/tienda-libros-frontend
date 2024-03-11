@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { MyContext } from "./context/MyContext";
-import SideCart from "./SideCart";
-import Search from "./Search";
+import { MyContext } from "./context/MyContext.jsx";
+import SideCart from "./SideCart.jsx";
+import Search from "./Search.jsx";
 
 const Header = (props) => {
   const { setOpen, carro } = useContext(MyContext);
