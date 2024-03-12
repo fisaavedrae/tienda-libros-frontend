@@ -52,7 +52,10 @@ const Header = (props) => {
                     </span>
                   </span>
                 </i>
-                <i className="fa-solid fa-gear"></i>
+                <Link to="/admin">
+                  <i className="fa-solid fa-gear"></i>
+                </Link>
+                
                 <i className="fa-solid fa-user"></i>
               </div>
             </div>
