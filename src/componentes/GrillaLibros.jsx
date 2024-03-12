@@ -52,15 +52,17 @@ const GrillaLibros = (props) => {
                           className="card-img-top"
                           alt={product.titulo}
                         />
-                        <div className="overlay">
-                          <h2>Hover effect 1</h2>
-                          <a
-                            className="info"
-                            href="#"
-                            onClick={() => agregarCarrito(product)}
-                          >
-                            <i className="fa-solid fa-cart-shopping" />
-                          </a>
+                        <div className="overlay d-flex flex-column justify-content-end align-items-center">
+                          <div className="d-flex flex-row justify-content-between gap-3 fs-3 ">
+                            <i
+                              className="fa-solid fa-cart-shopping mb-4"
+                              onClick={() => agregarCarrito(product)}
+                            />
+                            <i
+                              className="fa-solid fa-magnifying-glass-plus"
+                              onClick={() => irAProducto(product.id)}
+                            ></i>
+                          </div>
                         </div>
                       </div>
                       <div className="card-body">

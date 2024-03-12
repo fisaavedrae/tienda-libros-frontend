@@ -95,6 +95,14 @@ h1 {
   font-weight: 700;
   color: chocolate;
 }
+.card i {
+  color: white;
+  cursor: pointer;
+}
+.card i:hover {
+  color: white;
+  text-shadow: 0px 0px 10px white;
+}
 .form-range {
   -webkit-appearance: none;
   width: 100%;
