@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import { MyContext } from "./context/MyContext.jsx";
 
 const autores = [
   "Paulo Coelho",
@@ -57,8 +58,43 @@ const editoriales = [
   "Secker & Warburg",
 ];
 const Filtros = (props) => {
+  const {
+    productos,
+
+    setOpenVistaRapida,
+    idProductoVistaRapida,
+    setIdProductoVistaRapida,
+    agregarCarrito,
+    formatPrecio,
+    filtros,
+    setFiltros,
+  } = useContext(MyContext);
+
+  const handleFiltroPrecio = (valor) => {
+    console.log("entre");
+    setFiltros({ ...filtros, maxPrice: valor }); // filtros["maxPrice"] = valor;
+  };
   return (
     <>
+      <div className="container mb-4">
+        <h1>Filtro por precio</h1>
+        <div className="div">
+          <input
+            type="range"
+            min="0"
+            max="100000"
+            className="form-range"
+            id="customRange1"
+            onChange={(e) => {
+              handleFiltroPrecio(e.target.value);
+            }}
+          />
+          <div className="d-flex flex-row justify-content-between align-items-center">
+            <span>Precio maximo: {formatPrecio(filtros.maxPrice)}</span>
+            <button className="btn btn-primary">Filtrar</button>
+          </div>
+        </div>
+      </div>
       <div className="container">
         <h1>Generos</h1>
         <ul className="list-group list-group-flush ">

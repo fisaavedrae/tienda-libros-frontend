@@ -23,10 +23,10 @@ function App() {
   const [openVistaRapida, setOpenVistaRapida] = useState(false);
   const [idProductoVistaRapida, setIdProductoVistaRapida] = useState(10);
   const [filtros, setFiltros] = useState({
-    categoria: "all",
-    marca: "",
-    minPrice: 0,
-    maxPrice: 1000000,
+    autor: "all",
+    editorial: "all",
+    genero: "all",
+    maxPrice: 100000,
   });
   const agregarCarrito = (obj) => {
     setTotal(Number(total) + Number(obj.precio));
