@@ -91,7 +91,7 @@ const Filtros = (props) => {
           />
           <div className="d-flex flex-row justify-content-between align-items-center">
             <span>Precio maximo: {formatPrecio(filtros.maxPrice)}</span>
-            <button className="btn btn-primary">Filtrar</button>
+            <button className="btn btn-filtros">Filtrar</button>
           </div>
         </div>
       </div>
