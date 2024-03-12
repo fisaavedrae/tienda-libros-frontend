@@ -4,8 +4,7 @@ import PropTypes from "prop-types";
 const Footer = (props) => {
   return (
     <>
-      <footer className="py-3 my-4">
-        <ul className="nav justify-content-center border-bottom pb-3 mb-3"></ul>
+      <footer className="py-3 my-4 mb-0 mt-4 pt-5">
         <p className="text-center text-body-secondary">
           © 2024 Desarrollado por{" "}
           <a href="https://github.com/rimar-basaa">Ricardo Barrientos</a> y{" "}
