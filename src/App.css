@@ -50,6 +50,9 @@ h1 {
 /* Responsive*/
 .GrillaProductos {
 }
+#cabecera-grilla p {
+  font-size: 0.8rem;
+}
 .card {
   width: 90%;
   object-fit: cover;

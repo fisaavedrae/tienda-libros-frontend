@@ -5,6 +5,7 @@ import { MyContext } from "./context/MyContext.jsx";
 import { useNavigate } from "react-router-dom";
 import Paginacion from "./Paginacion.jsx";
 import Filtros from "./Filtros.jsx";
+import CabeceraGrilla from "./CabeceraGrilla.jsx";
 
 const GrillaLibros = (props) => {
   const {
@@ -36,6 +37,7 @@ const GrillaLibros = (props) => {
         </div>
         <div id="libros">
           <div className="GrillaProductos">
+            <CabeceraGrilla cantidadLibros={productos.length} />
             <div className="row row-cols-1 row-cols-md-3 g-4">
               {productos.map((product) => (
                 <>

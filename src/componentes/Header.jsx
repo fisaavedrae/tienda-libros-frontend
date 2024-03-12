@@ -48,7 +48,7 @@ const Header = (props) => {
                   <span className="visually-hidden">productos en el carro</span>
                 </span>
               </i>
-
+              <i className="fa-solid fa-gear"></i>
               <i className="fa-solid fa-user"></i>
             </div>
           </div>
