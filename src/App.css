@@ -46,6 +46,13 @@ body {
   color: white;
   font-size: 2rem;
 }
+.dropdown-item {
+  font-size: 0.9rem;
+}
+.dropdown-item:hover {
+  background-color: rgb(244, 244, 244);
+  color: rgb(245, 164, 106);
+}
 h1 {
   font-size: 1rem;
   border-bottom: 1px solid black;
