@@ -1,11 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+const lala = "test";
+
 const Search = (props) => {
   return (
     <>
       <div
-        className="offcanvas offcanvas-top"
+        className="offcanvas offcanvas-top bg-dark"
         tabIndex="-1"
         id="offcanvasSearch"
         aria-labelledby="offcanvasSearchLabel"

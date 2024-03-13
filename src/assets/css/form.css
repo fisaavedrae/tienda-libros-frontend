@@ -1,0 +1,8 @@
+.form-control {
+  --bs-focus-ring-color: black;
+  --bs-focus-ring-width: 1px;
+  --bs-focus-ring-opacity: 1;
+  --bs-focus-ring-inset: 0;
+  --bs-focus-ring-offset-width: 0;
+  --bs-focus-ring-offset-color: #fff;
+}
