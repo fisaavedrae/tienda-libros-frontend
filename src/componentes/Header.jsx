@@ -5,7 +5,13 @@ import { MyContext } from "./context/MyContext.jsx";
 import SideCart from "./SideCart.jsx";
 import Search from "./Search.jsx";
 
-const Header = (props) => {
+const Header = ({
+  ishome = true,
+  isSearch = true,
+  isCarrito = true,
+  isAdmin = true,
+  isUser = true,
+}) => {
   const { setOpen, carro } = useContext(MyContext);
   return (
     <>
@@ -27,73 +33,82 @@ const Header = (props) => {
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <div className="d-flex flex-row justify-content-end items-end gap-3 w-100">
                 <ul className="nav justify-content-end gap-3">
-                  <li className="nav-item">
-                    <Link to="/">
-                      <i className="fa-solid fa-house"></i>
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <i
-                      className="fa-solid fa-magnifying-glass"
-                      data-bs-toggle="offcanvas"
-                      data-bs-target="#offcanvasSearch"
-                      aria-controls="offcanvasSearch"
-                    ></i>
-                  </li>
-                  <li className="nav-item">
-                    <i
-                      className="fa-solid fa-cart-shopping position-relative icono-header"
-                      data-bs-toggle="offcanvas"
-                      data-bs-target="#offcanvasExample"
-                      aria-controls="offcanvasExample"
-                    >
-                      <span
-                        id="circuloCarro"
-                        className="position-absolute top-0 start-100 translate-middle p-1  border border-light rounded-circle"
+                  {ishome && (
+                    <li className="nav-item">
+                      <Link to="/">
+                        <i className="fa-solid fa-house"></i>
+                      </Link>
+                    </li>
+                  )}
+                  {isSearch && (
+                    <li className="nav-item">
+                      <i
+                        className="fa-solid fa-magnifying-glass"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasSearch"
+                        aria-controls="offcanvasSearch"
+                      ></i>
+                    </li>
+                  )}
+                  {isCarrito && (
+                    <li className="nav-item">
+                      <i
+                        className="fa-solid fa-cart-shopping position-relative icono-header"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasExample"
+                        aria-controls="offcanvasExample"
                       >
-                        {carro.length}
-                        <span className="visually-hidden">
-                          productos en el carro
+                        <span
+                          id="circuloCarro"
+                          className="position-absolute top-0 start-100 translate-middle p-1  border border-light rounded-circle"
+                        >
+                          {carro.length}
+                          <span className="visually-hidden">
+                            productos en el carro
+                          </span>
                         </span>
-                      </span>
-                    </i>
-                  </li>
-                  <li className="nav-item">
-                    <Link to="/Admin">
-                      <i className="fa-solid fa-gear"></i>
-                    </Link>
-                  </li>
-
-                  <li className="nav-item dropdown">
-                    <i
-                      className="fa-solid fa-user "
-                      data-bs-toggle="dropdown"
-                      data-bs-display="static"
-                      aria-expanded="false"
-                    ></i>
-                    <ul className="dropdown-menu dropdown-menu-end ">
-                      <li>
-                        <Link className="dropdown-item" to={"/Login"}>
-                          Login
-                        </Link>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to={"/Registro"}>
-                          Crear cuenta
-                        </Link>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to={"/Ordenes"}>
-                          Mis Ordenes
-                        </Link>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to={"/CerrarSesion"}>
-                          Cerrar Sesion
-                        </Link>
-                      </li>
-                    </ul>
-                  </li>
+                      </i>
+                    </li>
+                  )}
+                  {isAdmin && (
+                    <li className="nav-item">
+                      <Link to="/Admin">
+                        <i className="fa-solid fa-gear"></i>
+                      </Link>
+                    </li>
+                  )}
+                  {isUser && (
+                    <li className="nav-item dropdown">
+                      <i
+                        className="fa-solid fa-user "
+                        data-bs-toggle="dropdown"
+                        data-bs-display="static"
+                        aria-expanded="false"
+                      ></i>
+                      <ul className="dropdown-menu dropdown-menu-end ">
+                        <li>
+                          <Link className="dropdown-item" to={"/Login"}>
+                            Login
+                          </Link>
+                        </li>
+                        <li>
+                          <Link className="dropdown-item" to={"/Registro"}>
+                            Crear cuenta
+                          </Link>
+                        </li>
+                        <li>
+                          <Link className="dropdown-item" to={"/Ordenes"}>
+                            Mis Ordenes
+                          </Link>
+                        </li>
+                        <li>
+                          <Link className="dropdown-item" to={"/CerrarSesion"}>
+                            Cerrar Sesion
+                          </Link>
+                        </li>
+                      </ul>
+                    </li>
+                  )}
                 </ul>
               </div>
             </div>
