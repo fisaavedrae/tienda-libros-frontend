@@ -1,10 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
+import Header from "../componentes/Header.jsx";
+import AdmControl from "../componentes/AdmControl.jsx";
+import AdmVisor from "../componentes/AdmVisor.jsx";
+import Footer from "../componentes/Footer.jsx";
 
 const Admin = (props) => {
-  return <div>Admin t</div>;
+  return (
+    <>
+    <Header />
+    <AdmControl />
+    <AdmVisor />
+    <Footer />
+    </>
+  )
 };
-
-Admin.propTypes = {};
 
 export default Admin;
