@@ -48,7 +48,7 @@ const AdmControl = (props) => {
           <div className="row mb-3">
             <label className="col-sm-2 col-form-label col-form-label-sm">Genero</label>
             <div className="col-sm-10">
-              <select id="" class="form-select form-select-sm"
+              <select id="" className="form-select form-select-sm"
                 onChange={(e) => setGenero(e.target.value)}
                 value={genero}>
                 <option selected>Seleccione...</option>
@@ -61,7 +61,7 @@ const AdmControl = (props) => {
           <div className="row mb-3">
             <label className="col-sm-2 col-form-label col-form-label-sm">Editorial</label>
             <div className="col-sm-10">
-              <select id="" class="form-select form-select-sm"
+              <select id="" className="form-select form-select-sm"
                 onChange={(e) => setEditorial(e.target.value)}
                 value={editorial}>
                 <option selected>Seleccione...</option>
@@ -70,10 +70,10 @@ const AdmControl = (props) => {
             </div>
           </div>
         </div>
-        <div class="col-md-12 mb-3">
+        <div className="col-md-12 mb-3">
           <label  className="form-label col-form-label-sm">Reseña</label>
           <textarea 
-            class="form-control form-control-sm" 
+            className="form-control form-control-sm" 
             rows="2"
             onChange={(e) => setResena(e.target.value)}
             value={resena}></textarea>
@@ -114,10 +114,10 @@ const AdmControl = (props) => {
             </div>
           </div>
         </div>                              
-        <div class="col-6">
-          <div class="form-check">
-            <input className="form-check-input" type="checkbox" id="gridCheck"/>
-              <label className="form-check-label" for="gridCheck">
+        <div className="col-6">
+          <div className="form-check">
+            <input className="form-check-input" type="checkbox" id=""/>
+              <label className="form-check-label">
                 Destacado
               </label>
           </div>
@@ -125,6 +125,7 @@ const AdmControl = (props) => {
         <div className="col-6">
           <button type="submit" className="btn btn-primary mb-3">Agregar</button>
         </div>
+        <hr />
       </form>
     </div>
 
