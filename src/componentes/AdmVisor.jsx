@@ -3,7 +3,7 @@ const AdmVisor = () => {
   return (
     <div className="container">
       <hr />
-      <p>Inventario</p>
+      <p>Inventario x</p>
     
     </div>
   );
