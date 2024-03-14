@@ -42,13 +42,13 @@ const AdmVisor = () => {
               <button 
                 type="submit" 
                 className="btn btn-secondary" 
-                onClick={()=>editarLibro(libro.id)}>Editar</button>
+                onClick={()=>editarLibro(libro.id)}><i className="fa fa-edit"></i></button>
             </td>
             <td>
               <button 
                 type="submit" 
                 className="btn btn-danger" 
-                onClick={()=>borrarLibro(libro.id)}>Borrar</button>              
+                onClick={()=>borrarLibro(libro.id)}><i className="fa fa-trash-can"></i></button>              
             </td>
           </tr>
           ))}                    
