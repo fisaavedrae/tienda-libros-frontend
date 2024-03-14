@@ -124,7 +124,7 @@ const AdmControl = (props) => {
           </div>
         </div>
         <div className="col-6">
-          <button type="submit" className="btn btn-primary mb-3">Agregar</button>
+          <button type="submit" className="btn btn-filtros mb-3">Agregar</button>
         </div>
         <hr />
       </form>
