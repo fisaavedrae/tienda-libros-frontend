@@ -19,7 +19,6 @@ const AdmVisor = () => {
 
   return (
     <div className="container">
-
       <table className="table table-striped table-hover table-sm mt-5">
         <thead>
           <tr>
@@ -27,9 +26,9 @@ const AdmVisor = () => {
             <th scope="col">Titulo</th>
             <th scope="col">Autor</th>
             <th scope="col">Stock</th>
-            <th scope="col">Accion</th>
-            <th scope="col">Accion</th>            
-          </tr>
+            <th scope="col"></th>
+            <th scope="col"></th>            
+          </tr>ion
         </thead>
         <tbody>
           {libros.map(libro => (
