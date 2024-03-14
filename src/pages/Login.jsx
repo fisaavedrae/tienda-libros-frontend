@@ -8,7 +8,7 @@ const Login = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     ("use strict");
-    console.log("entre a validar fomr");
+    console.log("entre a validar formß");
 
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
     const forms = document.querySelectorAll(".needs-validation");

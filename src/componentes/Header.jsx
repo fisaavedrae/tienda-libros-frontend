@@ -12,7 +12,7 @@ const Header = ({
   isAdmin = true,
   isUser = true,
 }) => {
-  const { setOpen, carro } = useContext(MyContext);
+  const { carro } = useContext(MyContext);
   return (
     <>
       <div className="header">
@@ -121,6 +121,12 @@ const Header = ({
   );
 };
 
-Header.propTypes = {};
+Header.propTypes = {
+  ishome: PropTypes.bool,
+  isSearch: PropTypes.bool,
+  isCarrito: PropTypes.bool,
+  isAdmin: PropTypes.bool,
+  isUser: PropTypes.bool,
+};
 
 export default Header;
