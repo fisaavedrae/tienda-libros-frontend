@@ -39,7 +39,7 @@ const AdmVisor = () => {
             <td>{libro.stock}</td>
             <td>
               <i className="fa fa-edit" 
-                onClick={()=>borrarLibro(libro.id)}></i>
+                onClick={()=>editarLibro(libro.id)}></i>
             </td>
             <td>
               <i className="fa fa-trash-can" 
