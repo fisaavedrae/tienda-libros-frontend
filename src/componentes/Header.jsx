@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
 import React, { useContext } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MyContext } from "./context/MyContext.jsx";
 import SideCart from "./SideCart.jsx";
 import Search from "./Search.jsx";
-
+import jsonLibros from "../assets/libros.json";
 const Header = ({
   ishome = true,
   isSearch = true,
@@ -12,7 +13,22 @@ const Header = ({
   isAdmin = true,
   isUser = true,
 }) => {
-  const { carro } = useContext(MyContext);
+  const { carro, setProductos, setIsLoading } = useContext(MyContext);
+
+  useEffect(() => {
+    ReadAPI();
+  }, []);
+
+  async function ReadAPI() {
+    try {
+      //const response = await fetch("https://dummyjson.com/products");
+      //const data = await response.json();
+      console.log("readapi");
+      setProductos(jsonLibros);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <>
       <div className="header">

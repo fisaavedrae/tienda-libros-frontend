@@ -22,18 +22,21 @@ function App() {
   const [open, setOpen] = useState(false);
   const [openVistaRapida, setOpenVistaRapida] = useState(false);
   const [idProductoVistaRapida, setIdProductoVistaRapida] = useState(10);
+  const [prefijoImagen, setPrefijoImagen] = useState(
+    "https://fidatech.net/felipe/fotos-libros/"
+  );
   const [filtros, setFiltros] = useState({
     autor: "all",
     editorial: "all",
     genero: "all",
     maxPrice: 100000,
   });
-  const agregarCarrito = (obj) => {
+  const agregarCarrito = (cant, obj) => {
     setTotal(Number(total) + Number(obj.precio));
     const indice = carro.findIndex((item) => item.id === obj.id);
 
     if (indice !== -1) {
-      carro[indice].qty = Number(obj.qty) + 1;
+      carro[indice].qty = Number(obj.qty) + cant;
       //console.log("carro antes de eliminar", carro);
       setCarro([...carro]);
     } else {
@@ -72,6 +75,8 @@ function App() {
           formatPrecio,
           filtros,
           setFiltros,
+          prefijoImagen,
+          setPrefijoImagen,
         }}
       >
         <Routes>
