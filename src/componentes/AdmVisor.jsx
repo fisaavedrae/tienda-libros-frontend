@@ -6,11 +6,13 @@ const AdmVisor = () => {
   const libros = jsonLibros;
   console.log(libros);
 
-  const editarLibro = () => {
+  const editarLibro = (id) => {
+    alert("modificar libro con Id: " + id)
 
   };
 
-  const borrarLibro = () => {
+  const borrarLibro = (id) => {
+    alert("eliminar libro con Id: " + id)
 
   };
 
@@ -40,13 +42,13 @@ const AdmVisor = () => {
               <button 
                 type="submit" 
                 className="btn btn-secondary" 
-                onClick={editarLibro}>Editar</button>
+                onClick={()=>editarLibro(libro.id)}>Editar</button>
             </td>
             <td>
               <button 
                 type="submit" 
                 className="btn btn-danger" 
-                onClick={borrarLibro}>Borrar</button>              
+                onClick={()=>borrarLibro(libro.id)}>Borrar</button>              
             </td>
           </tr>
           ))}                    

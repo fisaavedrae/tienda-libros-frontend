@@ -13,6 +13,7 @@ const AdmControl = (props) => {
 
   const crearLibro = (e) => {
     //e.preventDefault();
+    alert("Libro agregado con exito")
 
   }; 
 
