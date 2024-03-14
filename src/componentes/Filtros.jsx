@@ -98,39 +98,42 @@ const Filtros = (props) => {
       <div className="container">
         <h1>Generos</h1>
         <ul className="list-group list-group-flush ">
-          {generos.map((genero) => (
-            <>
-              <li className="list-group-item d-flex justify-content-between align-items-start">
-                <div className="div">{genero}</div>
-                <div className="div">(3)</div>
-              </li>
-            </>
+          {generos.map((genero, index) => (
+            <li
+              key={index}
+              className="list-group-item d-flex justify-content-between align-items-start"
+            >
+              <div className="div">{genero}</div>
+              <div className="div">(3)</div>
+            </li>
           ))}
         </ul>
       </div>
       <div className="container mt-3">
         <h1>Autores</h1>
         <ul className="list-group list-group-flush ">
-          {autores.map((autor) => (
-            <>
-              <li className="list-group-item d-flex justify-content-between align-items-start">
-                <div className="div">{autor}</div>
-                <div className="div">(3)</div>
-              </li>
-            </>
+          {autores.map((autor, index) => (
+            <li
+              key={index}
+              className="list-group-item d-flex justify-content-between align-items-start"
+            >
+              <div className="div">{autor}</div>
+              <div className="div">(3)</div>
+            </li>
           ))}
         </ul>
       </div>
       <div className="container mt-3">
         <h1>Editoriales</h1>
         <ul className="list-group list-group-flush ">
-          {editoriales.map((editorial) => (
-            <>
-              <li className="list-group-item d-flex justify-content-between align-items-start">
-                <div className="div">{editorial}</div>
-                <div className="div">(3)</div>
-              </li>
-            </>
+          {editoriales.map((editorial, index) => (
+            <li
+              key={index}
+              className="list-group-item d-flex justify-content-between align-items-start"
+            >
+              <div className="div">{editorial}</div>
+              <div className="div">(3)</div>
+            </li>
           ))}
         </ul>
       </div>
