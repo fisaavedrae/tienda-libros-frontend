@@ -1,14 +1,9 @@
+import React, { useState } from 'react';
 import '../assets/css/admin.css'
-import jsonLibros from "../assets/libros.json";
 import autores from './Autores';
 import generos from './Generos';
 import editoriales from './Editoriales';
-import React, { useState } from 'react';
-
-const AdmVisor = () => {
-
-  const libros = jsonLibros;
-  console.log(libros);
+const AdmAddLibro = () => {
 
   const [titulo, setTitulo] = useState('');
   const [autor, setAutor] = useState('');
@@ -19,77 +14,40 @@ const AdmVisor = () => {
   const [precio, setPrecio] = useState(0);
   const [stock, setStock] = useState(0);
 
-  // carga libro al modal
-  const cargaLibro = (libro) => {
-    setTitulo(libro.titulo);
-    setAutor(libro.autor);
-    setGenero(libro.genero);
-    setEditorial(libro.editorial);
-    setResena(libro.resenia);
-    setUrlimg(libro.urlimg);
-    setPrecio(libro.precio);
-    setStock(libro.stock);
-  };
+  const crearLibro = (e) => {      
+    e.preventDefault();
 
-  const modificarLibro = () => {
-    alert("Libro modificado");
-    
-  }
-
-  const borrarLibro = (id) => {
-    alert("eliminar libro con Id: " + id)
+    alert("Libro agregado exitosamente");
+    setTitulo('');
+    setAutor('');
+    setGenero('');
+    setEditorial('');
+    setResena('');
+    setUrlimg('');
+    setPrecio(0);
+    setStock(0);
 
   };
-
 
   return (
     <div className="container">
-      <table className="table table-striped table-hover table-sm mt-5">
-        <thead>
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Titulo</th>
-            <th scope="col">Autor</th>
-            <th scope="col">Stock</th>
-            <th scope="col"></th>
-            <th scope="col"></th>            
-          </tr>
-        </thead>
-        <tbody>
-          {libros.map(libro => (
-            <tr key={libro.id}>
-            <th scope="row">{libro.id}</th>
-            <td>{libro.titulo}</td>
-            <td>{libro.autor}</td>
-            <td>{libro.stock}</td>
-            <td>
-              <i className="fa fa-edit" 
-                data-bs-toggle="modal" 
-                data-bs-target="#editModal"
-                onClick={()=>cargaLibro(libro)}></i>
-            </td>
-            <td>
-              <i className="fa fa-trash-can" 
-                onClick={()=>borrarLibro(libro.id)}></i>              
-            </td>
-          </tr>
-          ))}                    
-        </tbody>
-      </table>
-
-      {/* -----modal de edicion de libro*/}
-      <div className="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      {/* ----- disparador */}
+      <button type="button" className="btn btn-filtros" data-bs-toggle="modal" data-bs-target="#addModal">
+        Agregar Libro
+      </button>
+      {/* ----- modal de creacion de libro*/}
+      <div className="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
             {/* -----cabecera */}
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar Libro</h1>
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Libro</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             {/* -----cuerpo */}
             <div className="modal-body">              
               <div className="container boxadd">    
-                <form className="row" onSubmit={modificarLibro}>            
+                <form className="row" onSubmit={crearLibro}>            
                   <div className="col-md-6">
                     <div className="row mb-3">
                       <label className="col-sm-2 col-form-label col-form-label-sm">Titulo</label>
@@ -155,7 +113,7 @@ const AdmVisor = () => {
                     <label  className="form-label col-form-label-sm">Reseña</label>
                     <textarea 
                       className="form-control form-control-sm input-adm" 
-                      rows="3"
+                      rows="2"
                       onChange={(e) => setResena(e.target.value)}
                       value={resena} 
                       required>
@@ -207,7 +165,7 @@ const AdmVisor = () => {
                     </div>
                   </div>
                   <div className="col-6">
-                    <button type="submit" className="btn btn-filtros mb-5">Modificar</button>
+                    <button type="submit" className="btn btn-filtros mb-5">Agregar</button>
                   </div>
                 </form>
               </div>
@@ -215,9 +173,9 @@ const AdmVisor = () => {
           </div>
         </div>
       </div>
-      
     </div>
+
   );
 };
 
-export default AdmVisor;
+export default AdmAddLibro;
