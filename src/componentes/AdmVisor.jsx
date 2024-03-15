@@ -28,7 +28,7 @@ const AdmVisor = () => {
             <th scope="col">Stock</th>
             <th scope="col"></th>
             <th scope="col"></th>            
-          </tr>ion
+          </tr>
         </thead>
         <tbody>
           {libros.map(libro => (

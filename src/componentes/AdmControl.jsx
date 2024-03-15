@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
+import '../assets/css/admin.css'
+import autores from './Autores';
+import generos from './Generos';
+import editoriales from './Editoriales';
 
 const AdmControl = (props) => {
 
+  
   const [titulo, setTitulo] = useState('');
   const [autor, setAutor] = useState('');
   const [genero, setGenero] = useState('');
@@ -37,11 +42,14 @@ const AdmControl = (props) => {
           <div className="row mb-3">
             <label className="col-sm-2 col-form-label col-form-label-sm">Autor</label>
             <div className="col-sm-10">
-              <input 
-              type="text" 
-              className="form-control form-control-sm"
-              onChange={(e) => setAutor(e.target.value)}
-              value={autor}/>
+              <select id="" className="form-select form-select-sm"
+                onChange={(e) => setAutor(e.target.value)}
+                value={autor}>
+                  <option selected>Seleccione...</option>
+                  {autores.map(autor => (
+                    <option>{autor}</option>
+                  ))}                
+              </select>
             </div>
           </div>
         </div>
@@ -52,8 +60,10 @@ const AdmControl = (props) => {
               <select id="" className="form-select form-select-sm"
                 onChange={(e) => setGenero(e.target.value)}
                 value={genero}>
-                <option selected>Seleccione...</option>
-                <option>...</option>
+                  <option selected>Seleccione...</option>
+                  {generos.map(genero => (
+                    <option>{genero}</option>
+                  ))} 
               </select>
             </div>
           </div>
@@ -65,8 +75,10 @@ const AdmControl = (props) => {
               <select id="" className="form-select form-select-sm"
                 onChange={(e) => setEditorial(e.target.value)}
                 value={editorial}>
-                <option selected>Seleccione...</option>
-                <option>...</option>
+                  <option selected>Seleccione...</option>
+                  {editoriales.map(editorial => (
+                    <option>{editorial}</option>
+                  ))}
               </select>
             </div>
           </div>
@@ -116,11 +128,9 @@ const AdmControl = (props) => {
           </div>
         </div>                              
         <div className="col-6">
-          <div className="form-check">
-            <input className="form-check-input" type="checkbox" id=""/>
-              <label className="form-check-label">
-                Destacado
-              </label>
+          <div className="form-check form-switch">
+            <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" />
+            <label className="form-check-label" htmlFor="flexSwitchCheckChecked">Destacado</label>
           </div>
         </div>
         <div className="col-6">
@@ -129,7 +139,6 @@ const AdmControl = (props) => {
         <hr />
       </form>
     </div>
-
   );
 };
   
