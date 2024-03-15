@@ -48,7 +48,7 @@ const AdmAddLibro = () => {
             <div className="modal-body">              
               <div className="container boxadd">    
                 <form className="row" onSubmit={crearLibro}>            
-                  <div className="col-md-6">
+                  <div className="col-md-12">
                     <div className="row mb-3">
                       <label className="col-sm-2 col-form-label col-form-label-sm">Titulo</label>
                       <div className="col-sm-10">
@@ -61,7 +61,7 @@ const AdmAddLibro = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-6">
+                  <div className="col-md-12">
                     <div className="row mb-3">
                       <label className="col-sm-2 col-form-label col-form-label-sm">Autor</label>
                       <div className="col-sm-10">
@@ -77,7 +77,7 @@ const AdmAddLibro = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-6">
+                  <div className="col-md-12">
                     <div className="row mb-3">
                       <label className="col-sm-2 col-form-label col-form-label-sm">Genero</label>
                       <div className="col-sm-10">
@@ -93,7 +93,7 @@ const AdmAddLibro = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-6">
+                  <div className="col-md-12">
                     <div className="row mb-3">
                       <label className="col-sm-2 col-form-label col-form-label-sm">Editorial</label>
                       <div className="col-sm-10">
@@ -121,8 +121,8 @@ const AdmAddLibro = () => {
                   </div>
                   <div className="col-md-12">
                     <div className="row mb-3">
-                      <label className="col-sm-2 col-form-label col-form-label-sm">URL imagen</label>
-                      <div className="col-sm-10">
+                      <label className="col-sm-3 col-form-label col-form-label-sm">URL imagen</label>
+                      <div className="col-sm-9">
                         <input 
                             type="text" 
                             className="form-control form-control-sm input-adm"
@@ -134,8 +134,8 @@ const AdmAddLibro = () => {
                   </div>
                   <div className="col-md-6">
                     <div className="row mb-3">
-                      <label className="col-sm-2 col-form-label col-form-label-sm">Precio</label>
-                      <div className="col-sm-10">
+                      <label className="col-sm-3 col-form-label col-form-label-sm">Precio</label>
+                      <div className="col-sm-9">
                       <input 
                             type="Number" 
                             className="form-control form-control-sm input-adm" 
@@ -147,8 +147,8 @@ const AdmAddLibro = () => {
                   </div>
                   <div className="col-md-6">
                     <div className="row mb-3">
-                      <label className="col-sm-2 col-form-label col-form-label-sm">Stock</label>
-                      <div className="col-sm-10">
+                      <label className="col-sm-3 col-form-label col-form-label-sm">Stock</label>
+                      <div className="col-sm-9">
                       <input 
                             type="Number" 
                             className="form-control form-control-sm input-adm" 
