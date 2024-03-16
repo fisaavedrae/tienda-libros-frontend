@@ -40,9 +40,9 @@ const AdmAddLibro = () => {
         <div className="modal-dialog">
           <div className="modal-content">
             {/* -----cabecera */}
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Libro</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="exampleModalLabel">Agregar Libro</h1>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             {/* -----cuerpo */}
             <div className="modal-body">              
