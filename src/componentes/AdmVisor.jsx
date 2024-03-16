@@ -82,9 +82,9 @@ const AdmVisor = () => {
         <div className="modal-dialog">
           <div className="modal-content">
             {/* -----cabecera */}
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar Libro</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="exampleModalLabel">Modificar Libro</h1>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             {/* -----cuerpo */}
             <div className="modal-body">              
@@ -207,7 +207,7 @@ const AdmVisor = () => {
                     </div>
                   </div>
                   <div className="col-6">
-                    <button type="submit" className="btn btn-filtros mb-5">Modificar</button>
+                    <button type="submit" className="btn btn-filtros mb-5" data-bs-dismiss="modal">Modificar</button>
                   </div>
                 </form>
               </div>
