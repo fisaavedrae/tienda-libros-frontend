@@ -3,6 +3,10 @@
   cursor: pointer;
   text-align: center;
 }
+.input-adm {
+  outline: none;
+}
+
 /* cambia color switch*/
 .form-switch .form-check-input {
   line-height: 24px;
