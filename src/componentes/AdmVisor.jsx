@@ -31,7 +31,8 @@ const AdmVisor = () => {
     setStock(libro.stock);
   };
 
-  const modificarLibro = () => {
+  const modificarLibro = (e) => {
+    e.preventDefault();
     alert("Libro modificado");
     
   }
