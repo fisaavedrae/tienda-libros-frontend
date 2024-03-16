@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const lala = "test";
-
 const Search = (props) => {
   return (
     <>
@@ -20,7 +18,7 @@ const Search = (props) => {
             data-bs-dismiss="offcanvas"
             aria-label="Close"
           >
-            <i className="fa fa-xmark btn-close-search"></i>
+            <i id="btn-close-search" className="fa fa-xmark "></i>
           </button>
         </div>
         <div className="offcanvas-body items-center align-items-center d-flex justify-content-center ">
@@ -29,7 +27,8 @@ const Search = (props) => {
               <input type="text" id="inputSearch" placeholder="Buscar..." />
               <span className="input-group-text">
                 <i
-                  className="fa fa-magnifying-glass"
+                  id="icono-lupa"
+                  className="fa fa-magnifying-glass "
                   data-bs-dismiss="offcanvas"
                 ></i>
               </span>
