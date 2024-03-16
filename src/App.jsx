@@ -13,10 +13,13 @@ import Login from "./pages/Login.jsx";
 import Ordenes from "./pages/Ordenes.jsx";
 import Admin from "./pages/Admin.jsx";
 
+import jsonLibros from "./assets/libros.json";
+
 function App() {
   const [total, setTotal] = useState(0);
   const [totalOrder, setTotalOrder] = useState(0);
   const [productos, setProductos] = useState([]);
+  const [librosFiltrados, setLibrosFiltrados] = useState([]);
   const [carro, setCarro] = useState([]);
   const [orderProducts, setOrderProducts] = useState([]);
   const [open, setOpen] = useState(false);
@@ -32,15 +35,15 @@ function App() {
     maxPrice: 100000,
   });
   const agregarCarrito = (cant, obj) => {
-    setTotal(Number(total) + Number(obj.precio));
+    setTotal(Number(total) + Number(cant) * Number(obj.precio));
     const indice = carro.findIndex((item) => item.id === obj.id);
 
     if (indice !== -1) {
-      carro[indice].qty = Number(obj.qty) + cant;
+      carro[indice].qty = Number(obj.qty) + Number(cant);
       //console.log("carro antes de eliminar", carro);
       setCarro([...carro]);
     } else {
-      obj.qty = 1;
+      obj.qty = Number(cant);
       carro.push(obj);
       setCarro(carro);
     }
@@ -50,6 +53,18 @@ function App() {
     const precioCLP = new Intl.NumberFormat("es-CL").format(precio);
     return "$ " + precioCLP;
   };
+
+  async function ReadAPI() {
+    try {
+      //const response = await fetch("https://dummyjson.com/products");
+      //const data = await response.json();
+      console.log("readapi");
+      setProductos(jsonLibros);
+      setLibrosFiltrados(jsonLibros);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <>
@@ -77,6 +92,9 @@ function App() {
           setFiltros,
           prefijoImagen,
           setPrefijoImagen,
+          ReadAPI,
+          librosFiltrados,
+          setLibrosFiltrados,
         }}
       >
         <Routes>
@@ -84,7 +102,7 @@ function App() {
           <Route path="/Libro/:id" element={<DetalleLibro />} />
           <Route path="/Carrito" element={<Carrito />} />
           <Route path="/Pago" element={<Pago />} />
-          <Route path="/CerrarSession" element={<CerrarSesion />} />
+          <Route path="/CerrarSesion" element={<CerrarSesion />} />
           <Route path="/Registro" element={<Registro />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Ordenes" element={<Ordenes />} />
