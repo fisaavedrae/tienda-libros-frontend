@@ -79,7 +79,7 @@ const AdmVisor = () => {
       </table>
 
       {/* -----modal de edicion de libro*/}
-      <div className="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div className="modal fade" id="editModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
             {/* -----cabecera */}
@@ -113,8 +113,8 @@ const AdmVisor = () => {
                           value={autor}
                           required>
                             <option selected></option>
-                            {autores.map(autor => (
-                              <option>{autor}</option>
+                            {autores.map((autor, index) => (
+                              <option key={index}>{autor}</option>
                             ))}                
                         </select>
                       </div>
@@ -129,8 +129,8 @@ const AdmVisor = () => {
                           value={genero}
                           required >
                             <option selected></option>
-                            {generos.map(genero => (
-                              <option>{genero}</option>
+                            {generos.map((genero, index) => (
+                              <option key={index}>{genero}</option>
                             ))} 
                         </select>
                       </div>
@@ -145,8 +145,8 @@ const AdmVisor = () => {
                           value={editorial}
                           required >
                             <option selected></option>
-                            {editoriales.map(editorial => (
-                              <option>{editorial}</option>
+                            {editoriales.map((editorial, index) => (
+                              <option key={index}>{editorial}</option>
                             ))}
                         </select>
                       </div>
