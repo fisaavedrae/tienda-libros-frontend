@@ -10,7 +10,7 @@ import CabeceraGrilla from "./CabeceraGrilla.jsx";
 const GrillaLibros = (props) => {
   const {
     productos,
-
+    librosFiltrados,
     setOpenVistaRapida,
     idProductoVistaRapida,
     setIdProductoVistaRapida,
@@ -32,14 +32,14 @@ const GrillaLibros = (props) => {
   return (
     <>
       <div id="contenedor-libros" className="container ">
-        <div id="filtros">
+        <div id="filtros" className="container">
           <Filtros />
         </div>
         <div id="libros">
           <div className="GrillaProductos">
-            <CabeceraGrilla cantidadLibros={productos.length} />
+            <CabeceraGrilla cantidadLibros={librosFiltrados.length} />
             <div className="row row-cols-1 row-cols-md-3 g-4">
-              {productos.map((product, index) => (
+              {librosFiltrados.map((product, index) => (
                 <div key={index} className="col">
                   <div className="card">
                     <div className="hovereffect">

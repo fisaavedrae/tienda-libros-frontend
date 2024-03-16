@@ -1,66 +1,14 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { MyContext } from "./context/MyContext.jsx";
+import autores from "../assets/autores.js";
+import generos from "../assets/generos.js";
+import editoriales from "../assets/editoriales.js";
 
-const autores = [
-  "Paulo Coelho",
-  "Oscar Wilde",
-  "Douglas Crockford",
-  "Robert Louis Stevenson",
-  "F. Scott Fitzgerald",
-  "Mary Shelley",
-  "Patrick Rothfuss",
-  "Jane Austen",
-  "Robert C. Martin",
-  "Harper Lee",
-  "Miguel de Cervantes",
-  "J.R.R. Tolkien",
-  "Arthur Conan Doyle",
-  "George Orwell",
-  "Ernest Hemingway",
-  "Carlos Ruiz Zafón",
-  "Dan Brown",
-  "J.K. Rowling",
-  "J.D. Salinger",
-  "León Tolstói",
-  "Herman Melville",
-  "Brian W. Kernighan, Dennis M. Ritchie",
-  "Torcuato Luca de Tena",
-  "Victor Hugo",
-  "Gabriel García Márquez",
-  "Daniel Defoe",
-  "Eric Matthes",
-];
-const generos = [
-  "Ficción",
-  "Ciencia ficcion",
-  "Romance",
-  "Fábula",
-  "Clásico",
-  "Aventura",
-  "Programación",
-  "Misterio",
-  "Fantasía",
-];
-const editoriales = [
-  "Bloomsbury Publishing",
-  "Editorial Planeta",
-  "Longmans, Green & Co.",
-  "Editorial Sudamericana",
-  "J.B. Lippincott & Co.",
-  "T. Egerton, Whitehall",
-  "Juan de la Cuesta",
-  "George Allen & Unwin",
-  "Prentice Hall",
-  "Kurt Wolff Verlag",
-  "DAW Books",
-  "A. Lacroix, Verboeckhoven & Cie",
-  "Secker & Warburg",
-];
 const Filtros = (props) => {
   const {
     productos,
-
+    setProductos,
     setOpenVistaRapida,
     idProductoVistaRapida,
     setIdProductoVistaRapida,
@@ -68,11 +16,54 @@ const Filtros = (props) => {
     formatPrecio,
     filtros,
     setFiltros,
+    ReadAPI,
+    librosFiltrados,
+    setLibrosFiltrados,
   } = useContext(MyContext);
 
   const handleFiltroPrecio = (valor) => {
     console.log("entre");
     setFiltros({ ...filtros, maxPrice: valor }); // filtros["maxPrice"] = valor;
+  };
+
+  const handleFiltroGenero = (valor) => {
+    console.log("entre");
+    setFiltros({ ...filtros, genero: valor }); // filtros["maxPrice"] = valor;
+    handleFiltrar();
+  };
+
+  const handleFiltroAutor = (valor) => {
+    console.log("entre");
+    setFiltros({ ...filtros, autor: valor }); // filtros["maxPrice"] = valor;
+    handleFiltrar();
+  };
+
+  const handleFiltroEditorial = (valor) => {
+    console.log("entre");
+    setFiltros({ ...filtros, editorial: valor }); // filtros["maxPrice"] = valor;
+    handleFiltrar();
+  };
+
+  const handleFiltrar = () => {
+    console.log("entre");
+    console.log("antes filtro:", productos);
+    const libros = filtrarLibros(productos);
+    console.log("despues filtro: ", libros);
+    setLibrosFiltrados(libros);
+  };
+
+  const filtrarLibros = (libros) => {
+    console.log("entre");
+    console.log("filtros: ", filtros);
+    return libros.filter((libro) => {
+      return (
+        libro.precio <= filtros.maxPrice &&
+        (filtros.autor === "all" || libro.autor === filtros.autor) &&
+        (filtros.editorial === "all" ||
+          libro.editorial === filtros.editorial) &&
+        (filtros.genero === "all" || libro.genero === filtros.genero)
+      );
+    });
   };
   return (
     <>
@@ -91,9 +82,49 @@ const Filtros = (props) => {
           />
           <div className="d-flex flex-row justify-content-between align-items-center">
             <span>Precio maximo: {formatPrecio(filtros.maxPrice)}</span>
-            <button className="btn btn-filtros">Filtrar</button>
+            <button className="btn btn-filtros" onClick={handleFiltrar}>
+              Filtrar
+            </button>
           </div>
         </div>
+      </div>
+      <div className="container-fluid mb-4 d-flex  gap-4">
+        {filtros.genero !== "all" && (
+          <span
+            className="badge text-bg-dark position-relative"
+            onClick={() => handleFiltroGenero("all")}
+          >
+            {filtros.genero}
+            <span className="position-absolute ms-2 top-0 start-100 translate-middle p-2 bg-secondary border border-light rounded-circle">
+              <i className="fa fa-xmark"></i>
+              <span className="visually-hidden">New alerts</span>
+            </span>
+          </span>
+        )}
+        {filtros.autor !== "all" && (
+          <span
+            className="badge text-bg-dark position-relative"
+            onClick={() => handleFiltroAutor("all")}
+          >
+            {filtros.autor}
+            <span className="position-absolute ms-2 top-0 start-100 translate-middle p-2 bg-secondary border border-light rounded-circle">
+              <i className="fa fa-xmark"></i>
+              <span className="visually-hidden">New alerts</span>
+            </span>
+          </span>
+        )}
+        {filtros.editorial !== "all" && (
+          <span
+            className="badge text-bg-dark position-relative"
+            onClick={() => handleFiltroEditorial("all")}
+          >
+            {filtros.editorial}
+            <span className="position-absolute ms-2 top-0 start-100 translate-middle p-2 bg-secondary border border-light rounded-circle">
+              <i className="fa fa-xmark"></i>
+              <span className="visually-hidden">New alerts</span>
+            </span>
+          </span>
+        )}
       </div>
       <div className="container">
         <h1>Generos</h1>
@@ -101,6 +132,7 @@ const Filtros = (props) => {
           {generos.map((genero, index) => (
             <li
               key={index}
+              onClick={() => handleFiltroGenero(genero)}
               className="list-group-item d-flex justify-content-between align-items-start"
             >
               <div className="div">{genero}</div>
@@ -115,6 +147,7 @@ const Filtros = (props) => {
           {autores.map((autor, index) => (
             <li
               key={index}
+              onClick={() => handleFiltroAutor(autor)}
               className="list-group-item d-flex justify-content-between align-items-start"
             >
               <div className="div">{autor}</div>
@@ -129,6 +162,7 @@ const Filtros = (props) => {
           {editoriales.map((editorial, index) => (
             <li
               key={index}
+              onClick={() => handleFiltroEditorial(editorial)}
               className="list-group-item d-flex justify-content-between align-items-start"
             >
               <div className="div">{editorial}</div>

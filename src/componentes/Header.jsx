@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { MyContext } from "./context/MyContext.jsx";
 import SideCart from "./SideCart.jsx";
 import Search from "./Search.jsx";
-import jsonLibros from "../assets/libros.json";
+
 const Header = ({
   ishome = true,
   isSearch = true,
@@ -13,30 +13,20 @@ const Header = ({
   isAdmin = true,
   isUser = true,
 }) => {
-  const { carro, setProductos, setIsLoading } = useContext(MyContext);
+  const { carro, setProductos, setIsLoading, ReadAPI } = useContext(MyContext);
 
   useEffect(() => {
     ReadAPI();
   }, []);
 
-  async function ReadAPI() {
-    try {
-      //const response = await fetch("https://dummyjson.com/products");
-      //const data = await response.json();
-      console.log("readapi");
-      setProductos(jsonLibros);
-    } catch (error) {
-      console.log(error);
-    }
-  }
   return (
     <>
-      <div className="header">
+      <div className="header container-fluid ">
         <nav className="navbar navbar-expand-lg sticky-top  ">
           <div className="container-fluid">
             <p className="navbar-brand">Tienda Libros</p>
             <button
-              className="navbar-toggler"
+              className="navbar-toggler text-white"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarTogglerDemo02"
@@ -44,7 +34,9 @@ const Header = ({
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span className="navbar-toggler-icon"></span>
+              <span id="btn-toggler" className="">
+                <i className="fa-solid fa-bars"></i>
+              </span>
             </button>
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <div className="d-flex flex-row justify-content-end items-end gap-3 w-100">

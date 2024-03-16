@@ -28,7 +28,10 @@ const Search = (props) => {
             <div className="input-group mb-3 ">
               <input type="text" id="inputSearch" placeholder="Buscar..." />
               <span className="input-group-text">
-                <i className="fa fa-magnifying-glass"></i>
+                <i
+                  className="fa fa-magnifying-glass"
+                  data-bs-dismiss="offcanvas"
+                ></i>
               </span>
             </div>
           </div>

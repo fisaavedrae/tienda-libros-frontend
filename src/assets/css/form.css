@@ -27,3 +27,7 @@
   border: none;
   --bs-focus-ring-width: 0;
 }
+#inputCant {
+  width: 5%;
+  text-align: center;
+}

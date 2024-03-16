@@ -18,6 +18,11 @@ body {
   padding-bottom: 40px;
   height: 35vmin;
 }
+.navbar-toggler-icon,
+.navbar-toggler,
+#btn-toggler {
+  color: white;
+}
 .navbar {
   border-bottom: 1px solid rgb(176, 174, 174);
 }
@@ -79,11 +84,21 @@ h1 {
 .divider {
   border-bottom: 1px solid rgb(176, 174, 174);
 }
+a {
+  color: black;
+  text-decoration: none;
+}
+a:hover {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  text-shadow: 0px 0px 5px rgb(199, 197, 197);
+}
 /* Responsive*/
 #contenedor-libros {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr;
   grid-template-areas: "libros" "filtros";
 }
 #filtros {
@@ -154,6 +169,9 @@ h1 {
   font-weight: thin;
   font-size: 0.8rem;
   border-radius: 0;
+}
+.orden-creada {
+  height: 250px;
 }
 footer {
   background-color: rgb(243, 245, 245);
