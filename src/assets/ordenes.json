@@ -1,6 +1,6 @@
 [
   {
-    "id_orden": "00000001",
+    "id_orden": "1",
     "fecha_orden": "08/03/2024",
     "total": 20000,
     "libros": [
@@ -25,7 +25,7 @@
     ]
   },
   {
-    "id_orden": "00000002",
+    "id_orden": "2",
     "fecha_orden": "10/03/2024",
     "total": 45000,
     "libros": [
@@ -50,7 +50,7 @@
     ]
   },
   {
-    "id_orden": "00000003",
+    "id_orden": "3",
     "fecha_orden": "12/03/2024",
     "total": 78990,
     "libros": [

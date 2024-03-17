@@ -70,14 +70,23 @@ const SideCart = (props) => {
               </div>
             </div>
           </div>
-          <div className="container">
-            <button
-              className="btn btn-pago text-uppercase w-100"
-              onClick={() => handleCheckout()}
-            >
-              check out
-            </button>
-          </div>
+          {carro.length !== 0 && (
+            <div className="container">
+              <button
+                className="btn btn-pago text-uppercase w-100"
+                data-bs-dismiss="offcanvas"
+                onClick={() => handleCheckout()}
+              >
+                check out
+              </button>
+            </div>
+          )}
+          {carro.length == 0 && (
+            <div className="container text-center">
+              <h2 className="fs-5">Su carro está vacío</h2>
+            </div>
+          )}
+
           <div className="divider mt-3"></div>
           <div className="container-fluid d-flex flex-column gap-3 mt-3">
             {carro.map((libro, index) => (
