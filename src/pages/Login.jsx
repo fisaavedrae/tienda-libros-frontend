@@ -34,7 +34,7 @@ const Login = (props) => {
   return (
     <>
       <Header isSearch={false} isCarrito={false} isAdmin={false} />
-      <div className="container w-50">
+      <div className="container  col-md-6 offset-md-3">
         <h1>Login</h1>
         <div className="container  border rounded mt-3 py-5 px-5">
           <form

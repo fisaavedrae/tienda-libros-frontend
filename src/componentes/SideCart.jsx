@@ -41,7 +41,7 @@ const SideCart = (props) => {
   }
   const navigate = useNavigate();
   function handleCheckout() {
-    navigate(`/Pago`);
+    navigate(`/CheckOut`);
   }
   return (
     <>
@@ -75,7 +75,7 @@ const SideCart = (props) => {
               className="btn btn-pago text-uppercase w-100"
               onClick={() => handleCheckout()}
             >
-              pagar
+              check out
             </button>
           </div>
           <div className="divider mt-3"></div>
