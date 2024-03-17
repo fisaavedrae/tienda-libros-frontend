@@ -32,7 +32,7 @@ const Registro = (props) => {
   return (
     <>
       <Header isSearch={false} isCarrito={false} isAdmin={false} />
-      <div className="container w-50">
+      <div className="container-fluid col-md-6 offset-md-3">
         <h1>Crear cuenta</h1>
         <div className="container  border rounded mt-3 py-5 px-5">
           <form

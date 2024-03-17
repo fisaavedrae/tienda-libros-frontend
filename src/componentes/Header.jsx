@@ -13,7 +13,8 @@ const Header = ({
   isAdmin = true,
   isUser = true,
 }) => {
-  const { carro, setProductos, setIsLoading, ReadAPI } = useContext(MyContext);
+  const { carro, setCarro, setProductos, setIsLoading, ReadAPI } =
+    useContext(MyContext);
 
   useEffect(() => {
     ReadAPI();
@@ -105,8 +106,8 @@ const Header = ({
                           </Link>
                         </li>
                         <li>
-                          <Link className="dropdown-item" to={"/Ordenes"}>
-                            Mis Ordenes
+                          <Link className="dropdown-item" to={"/MiCuenta"}>
+                            Mi Cuenta
                           </Link>
                         </li>
                         <li>

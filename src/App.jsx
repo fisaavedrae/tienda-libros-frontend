@@ -12,6 +12,8 @@ import Registro from "./pages/Registro.jsx";
 import Login from "./pages/Login.jsx";
 import Ordenes from "./pages/Ordenes.jsx";
 import Admin from "./pages/Admin.jsx";
+import CheckOut from "./pages/CheckOut.jsx";
+import MyAccount from "./pages/MyAccount.jsx";
 
 import jsonLibros from "./assets/libros.json";
 
@@ -34,6 +36,7 @@ function App() {
     genero: "all",
     maxPrice: 100000,
   });
+
   const agregarCarrito = (cant, obj) => {
     setTotal(Number(total) + Number(cant) * Number(obj.precio));
     const indice = carro.findIndex((item) => item.id === obj.id);
@@ -102,9 +105,11 @@ function App() {
           <Route path="/Libro/:id" element={<DetalleLibro />} />
           <Route path="/Carrito" element={<Carrito />} />
           <Route path="/Pago" element={<Pago />} />
+          <Route path="/CheckOut" element={<CheckOut />} />
           <Route path="/CerrarSesion" element={<CerrarSesion />} />
           <Route path="/Registro" element={<Registro />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/MiCuenta" element={<MyAccount />} />
           <Route path="/Ordenes" element={<Ordenes />} />
           <Route path="/Admin" element={<Admin />} />
         </Routes>
