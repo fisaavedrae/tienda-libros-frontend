@@ -78,10 +78,10 @@ const CheckOut = (props) => {
                 className="d-flex justify-content-between "
                 key={producto.id}
               >
-                <p className="fs-6 fw-lighter">
+                <p className="fs-6 fw-ligh">
                   {producto.titulo + " x " + producto.qty}
                 </p>
-                <p className="fs-6 fw-lighter">
+                <p className="fs-6 fw-light">
                   {formatPrecio(producto.precio * producto.qty)}
                 </p>
               </div>

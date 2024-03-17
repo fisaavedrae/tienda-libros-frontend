@@ -35,7 +35,7 @@ const Ordenes = (props) => {
         </div>
         <div className="col-md-9 themed-grid-col py-4 px-5">
           <h1 className="text-uppercase ms-2">Mis Ordenes</h1>
-          <table className="table">
+          <table className="table-sm">
             <thead>
               <tr>
                 <th scope="col" className="text-uppercase fs-6 fw-medium">
