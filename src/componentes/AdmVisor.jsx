@@ -24,9 +24,11 @@ const AdmVisor = () => {
   const [urlimg, setUrlimg] = useState('');
   const [precio, setPrecio] = useState(0);
   const [stock, setStock] = useState(0);
+  const [id,setId] = useState();
 
   // carga libro al modal
   const cargaLibro = (libro) => {
+    setId(libro.id)   
     setTitulo(libro.titulo);
     setAutor(libro.autor);
     setGenero(libro.genero);
@@ -39,13 +41,33 @@ const AdmVisor = () => {
 
   const modificarLibro = (e) => {
     e.preventDefault();
-    alert("Libro modificado");
-    
-  }
 
-  const borrarLibro = (id) => {
-    alert("eliminar libro con Id: " + id)
+    const libroModificado = {
+      id: id,
+      titulo:`${titulo}`,
+      autor:`${autor}`,
+      resenia:`${resena}`,
+      editorial:`${editorial}`,      
+      genero:`${genero}`,
+      urlimg: '1984.jpg',
+      precio: Number(precio),
+      stock: Number(stock)
+    };
+    //console.log(Number(libroModificado.id));
+
+    setProductos(productos.map(item => {
+      if (item.id === Number(libroModificado.id)) {
+        return {...item, ...libroModificado}
+      }
+      return item
+    }));
+
+    //alert("Libro modificado");    
+  };
+
+  const borrarLibro = (id) => {    
     setProductos(productos.filter(item => item.id !== id));
+    //alert("Libro eliminado");
   };
 
 

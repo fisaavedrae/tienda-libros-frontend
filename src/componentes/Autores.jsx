@@ -26,6 +26,15 @@ const Autores = [
     "Gabriel García Márquez",
     "Daniel Defoe",
     "Eric Matthes",
+    "Antoine de Saint-Exupéry",
+    "Homero",
+    "Julio Cortázar",
+    "Bram Stoker",
+    "Julio Verne",
+    "Louisa May Alcott",
+    "Fiodor Dostoievski",
+    "Franz Kafka",
+    "Mario Vargas Llosa"
   ];
 
   export default Autores;
