@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { MyContext } from "../componentes/context/MyContext";
 import '../assets/css/admin.css'
 import autores from './Autores';
 import generos from './Generos';
 import editoriales from './Editoriales';
 const AdmAddLibro = () => {
+
+  const {
+    productos,
+    setProductos
+  } = useContext(MyContext);
 
   const [titulo, setTitulo] = useState('');
   const [autor, setAutor] = useState('');
@@ -11,11 +17,29 @@ const AdmAddLibro = () => {
   const [editorial, setEditorial] = useState('');
   const [resena, setResena] = useState('');
   const [urlimg, setUrlimg] = useState('');
-  const [precio, setPrecio] = useState(0);
-  const [stock, setStock] = useState(0);
+  const [precio, setPrecio] = useState();
+  const [stock, setStock] = useState();
 
   const crearLibro = (e) => {      
     e.preventDefault();
+
+    const newId = productos.length + 10;        
+
+    const nuevoLibro = {
+      id: newId,
+      titulo:`${titulo}`,
+      autor:`${autor}`,
+      resenia:`${resena}`,
+      editorial:`${editorial}`,      
+      genero:`${genero}`,
+      urlimg: '1984.jpg',
+      precio: Number(precio),
+      stock: Number(stock)
+    };
+    console.log(nuevoLibro);
+
+    setProductos([...productos, nuevoLibro]);
+    console.log(productos);
 
     alert("Libro agregado exitosamente");
     setTitulo('');
@@ -67,11 +91,11 @@ const AdmAddLibro = () => {
                       <div className="col-sm-10">
                         <select id="" className="form-select form-select-sm"
                           onChange={(e) => setAutor(e.target.value)}
-                          value={autor}
+                          //value={autor}
                           required>
-                            <option selected></option>
+                            <option selected value=''>seleccione...</option>
                             {autores.map((autor, index) => (
-                              <option key={index}>{autor}</option>
+                              <option key={index} value={autor}>{autor}</option>
                             ))}                
                         </select>
                       </div>
@@ -83,11 +107,11 @@ const AdmAddLibro = () => {
                       <div className="col-sm-10">
                         <select id="" className="form-select form-select-sm"
                           onChange={(e) => setGenero(e.target.value)}
-                          value={genero}
+                          //value={genero}
                           required >
-                            <option selected></option>
+                            <option selected value=''>seleccione...</option>
                             {generos.map((genero, index) => (
-                              <option key={index}>{genero}</option>
+                              <option key={index} value={genero}>{genero}</option>
                             ))} 
                         </select>
                       </div>
@@ -99,11 +123,11 @@ const AdmAddLibro = () => {
                       <div className="col-sm-10">
                         <select id="" className="form-select form-select-sm"
                           onChange={(e) => setEditorial(e.target.value)}
-                          value={editorial}
+                          //value={editorial}
                           required >
-                            <option selected></option>
+                            <option selected value=''>seleccione...</option>
                             {editoriales.map((editorial, index) => (
-                              <option key={index}>{editorial}</option>
+                              <option key={index} value={editorial}>{editorial}</option>
                             ))}
                         </select>
                       </div>

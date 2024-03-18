@@ -3,12 +3,18 @@ import jsonLibros from "../assets/libros.json";
 import autores from './Autores';
 import generos from './Generos';
 import editoriales from './Editoriales';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { MyContext } from "../componentes/context/MyContext";
 
 const AdmVisor = () => {
 
-  const libros = jsonLibros;
-  console.log(libros);
+  
+
+  const {
+    productos,
+    setProductos
+  } = useContext(MyContext);
+  console.log(productos);
 
   const [titulo, setTitulo] = useState('');
   const [autor, setAutor] = useState('');
@@ -39,7 +45,7 @@ const AdmVisor = () => {
 
   const borrarLibro = (id) => {
     alert("eliminar libro con Id: " + id)
-
+    setProductos(productos.filter(item => item.id !== id));
   };
 
 
@@ -57,7 +63,7 @@ const AdmVisor = () => {
           </tr>
         </thead>
         <tbody>
-          {libros.map(libro => (
+          {productos.map(libro => (
             <tr key={libro.id}>
             <th scope="row">{libro.id}</th>
             <td>{libro.titulo}</td>
@@ -114,7 +120,7 @@ const AdmVisor = () => {
                           required>
                             <option selected></option>
                             {autores.map((autor, index) => (
-                              <option key={index}>{autor}</option>
+                              <option key={index} value={autor}>{autor}</option>
                             ))}                
                         </select>
                       </div>
@@ -130,7 +136,7 @@ const AdmVisor = () => {
                           required >
                             <option selected></option>
                             {generos.map((genero, index) => (
-                              <option key={index}>{genero}</option>
+                              <option key={index} value={genero}>{genero}</option>
                             ))} 
                         </select>
                       </div>
@@ -146,7 +152,7 @@ const AdmVisor = () => {
                           required >
                             <option selected></option>
                             {editoriales.map((editorial, index) => (
-                              <option key={index}>{editorial}</option>
+                              <option key={index} value={editorial}>{editorial}</option>
                             ))}
                         </select>
                       </div>
