@@ -32,7 +32,7 @@ const AdmAddLibro = () => {
       resenia:`${resena}`,
       editorial:`${editorial}`,      
       genero:`${genero}`,
-      urlimg: '1984.jpg',
+      urlimg: `${urlimg}`,
       precio: Number(precio),
       stock: Number(stock)
     };
