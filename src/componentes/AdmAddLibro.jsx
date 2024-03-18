@@ -36,12 +36,11 @@ const AdmAddLibro = () => {
       precio: Number(precio),
       stock: Number(stock)
     };
-    console.log(nuevoLibro);
+    //console.log(nuevoLibro);
 
     setProductos([...productos, nuevoLibro]);
-    console.log(productos);
-
-    alert("Libro agregado exitosamente");
+    //console.log(productos);
+    
     setTitulo('');
     setAutor('');
     setGenero('');
@@ -50,6 +49,8 @@ const AdmAddLibro = () => {
     setUrlimg('');
     setPrecio(0);
     setStock(0);
+
+    //alert("Libro agregado exitosamente");
 
   };
 
@@ -91,9 +92,9 @@ const AdmAddLibro = () => {
                       <div className="col-sm-10">
                         <select id="" className="form-select form-select-sm"
                           onChange={(e) => setAutor(e.target.value)}
-                          //value={autor}
+                          value={autor}
                           required>
-                            <option selected value=''>seleccione...</option>
+                            <option selected></option>
                             {autores.map((autor, index) => (
                               <option key={index} value={autor}>{autor}</option>
                             ))}                
@@ -107,9 +108,9 @@ const AdmAddLibro = () => {
                       <div className="col-sm-10">
                         <select id="" className="form-select form-select-sm"
                           onChange={(e) => setGenero(e.target.value)}
-                          //value={genero}
+                          value={genero}
                           required >
-                            <option selected value=''>seleccione...</option>
+                            <option selected></option>
                             {generos.map((genero, index) => (
                               <option key={index} value={genero}>{genero}</option>
                             ))} 
@@ -123,9 +124,9 @@ const AdmAddLibro = () => {
                       <div className="col-sm-10">
                         <select id="" className="form-select form-select-sm"
                           onChange={(e) => setEditorial(e.target.value)}
-                          //value={editorial}
+                          value={editorial}
                           required >
-                            <option selected value=''>seleccione...</option>
+                            <option selected></option>
                             {editoriales.map((editorial, index) => (
                               <option key={index} value={editorial}>{editorial}</option>
                             ))}

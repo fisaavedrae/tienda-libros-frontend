@@ -12,6 +12,28 @@ const Editoriales = [
     "DAW Books",
     "A. Lacroix, Verboeckhoven & Cie",
     "Secker & Warburg",
+    "Editorial Oveja Negra",
+    "Reynal & Hitchcock",
+    "Doubleday",
+    "HarperCollins",
+    "Iberica",
+    "Ward, Lock and Co.",
+    "George Newnes Ltd",
+    "Lackington, Hughes, Harding, Mavor & Jones",
+    "Richard Bentley",
+    "Archibald Constable and Company",
+    "Pierre-Jules Hetzel",
+    "The Russian Messenger",
+    "Charles Scribners Sons",
+    "Robert Brothers",
+    "W. Taylor",
+    "Alianza Editorial",
+    "Cassell & Co.",
+    "Seix Barral",
+    "Plaza & Janés",
+    "Prentice Hall",
+    "O'Reilly Media",
+    "No Starch Press"
   ];
 
   export default Editoriales;

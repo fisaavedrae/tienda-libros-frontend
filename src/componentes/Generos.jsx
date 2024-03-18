@@ -7,7 +7,7 @@ const Generos = [
     "Aventura",
     "Programación",
     "Misterio",
-    "Fantasía",
+    "Fantasía"
   ];
 
   export default Generos;
