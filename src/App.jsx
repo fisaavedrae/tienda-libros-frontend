@@ -27,14 +27,20 @@ function App() {
   const [open, setOpen] = useState(false);
   const [openVistaRapida, setOpenVistaRapida] = useState(false);
   const [idProductoVistaRapida, setIdProductoVistaRapida] = useState(10);
+  const [isLoadingGrilla, setIsLoadingGrilla] = useState(false);
+  const [mensaje, setMensaje] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
   const [prefijoImagen, setPrefijoImagen] = useState(
     "https://fidatech.net/felipe/fotos-libros/"
   );
   const [filtros, setFiltros] = useState({
-    autor: "all",
-    editorial: "all",
-    genero: "all",
+    id_autor: "-1",
+    id_editorial: "-1",
+    id_genero: "-1",
     maxPrice: 100000,
+    order_by: "titulo_ASC",
+    limits: 6,
+    page: 1,
   });
 
   const agregarCarrito = (cant, obj) => {
@@ -58,12 +64,44 @@ function App() {
   };
 
   async function ReadAPI() {
+    //console.log("voy a leer api");
     try {
-      //const response = await fetch("https://dummyjson.com/products");
-      //const data = await response.json();
-      console.log("readapi");
-      setProductos(jsonLibros);
-      setLibrosFiltrados(jsonLibros);
+      //console.log("filtros", filtros);
+      const parametros =
+        "id_autor=" +
+        filtros.id_autor +
+        "&id_editorial=" +
+        filtros.id_editorial +
+        "&id_genero=" +
+        filtros.id_genero +
+        "&maxPrice=" +
+        filtros.maxPrice +
+        "&limits=" +
+        filtros.limits +
+        "&page=" +
+        filtros.page +
+        "&order_by=" +
+        filtros.order_by;
+      const response = await fetch(
+        "http://localhost:3000/libros/filtros?" + parametros
+      );
+      const data = await response.json();
+      console.log(data);
+      if (data.status !== "Bad Request") {
+        setMensaje;
+        console.log("erorro");
+        console.log("data", data);
+        setMensaje("");
+        setProductos(data);
+      } else {
+        setProductos("");
+
+        setMensaje(data.message);
+        console.log(mensaje);
+      }
+
+      //setProductos(jsonLibros);
+      //setLibrosFiltrados(jsonLibros);
     } catch (error) {
       console.log(error);
     }
@@ -95,9 +133,15 @@ function App() {
           setFiltros,
           prefijoImagen,
           setPrefijoImagen,
-          ReadAPI,
+
           librosFiltrados,
           setLibrosFiltrados,
+          isLoadingGrilla,
+          setIsLoadingGrilla,
+          ReadAPI,
+          mensaje,
+          currentPage,
+          setCurrentPage,
         }}
       >
         <Routes>

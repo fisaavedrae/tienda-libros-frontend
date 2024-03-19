@@ -23,7 +23,7 @@ const DetalleLibro = (props) => {
   const [error, setError] = useState(false);
 
   const libro = productos.find(
-    (producto) => Number(producto.id) === Number(id)
+    (producto) => Number(producto.id_libro) === Number(id)
   );
   const handleCarrito = (libro) => {
     console.log("cant", cant);
@@ -46,17 +46,13 @@ const DetalleLibro = (props) => {
 
       <div className="container d-sm-flex gap-5">
         <div className="div">
-          <img
-            className="img-fluid"
-            src={prefijoImagen + libro.urlimg}
-            alt=""
-          />
+          <img className="img-fluid" src={libro.urlimagen} alt="" />
         </div>
         <div className="div">
           <div className=" mt-4 fs-4 fw-bold">{libro.titulo}</div>
           <div className="mt-4 fs-4 fw-bold">{formatPrecio(libro.precio)}</div>
           <div className="divider mt-4 mb-5"></div>
-          <d className="container-fluid pt-4">{libro.resenia}</d>
+          <d className="container-fluid pt-4">{libro.resena}</d>
           <div className="container-fluid  d-sm-flex mt-4">
             <div className=" fw-bold pe-2">Autor: </div>
             <div className="div pe-5">{libro.autor}</div>
