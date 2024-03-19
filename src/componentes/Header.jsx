@@ -13,12 +13,8 @@ const Header = ({
   isAdmin = true,
   isUser = true,
 }) => {
-  const { carro, setCarro, setProductos, setIsLoading, ReadAPI } =
+  const { carro, setCarro, setProductos, setIsLoading, setLibrosFiltrados } =
     useContext(MyContext);
-
-  useEffect(() => {
-    ReadAPI();
-  }, []);
 
   return (
     <>

@@ -5,18 +5,23 @@ import { MyContext } from "../componentes/context/MyContext.jsx";
 
 const CabeceraGrilla = ({ cantidadLibros }) => {
   const [orden, setOrden] = useState("");
-  const { productos, setProductos } = useContext(MyContext);
-  const handleClick = (clave) => {
-    //alert("ingreze");
-    //setOrden(clave);
-    //console.log("orden : " + orden + " busqueda realizada: " + orden);
-    //const resultadoOrden = [...productos];
-    //if (orden === "asc") {
-    //  resultadoOrden.reverse();
-    //} else if (orden === "desc") {
-    //  resultadoOrden.reverse();
-    //}
-    //setProductos(resultadoOrden);
+  const {
+    productos,
+    setProductos,
+    filtros,
+    setFiltros,
+    ReadAPI,
+    librosFiltrados,
+    setLibrosFiltrados,
+    setIsLoadingGrilla,
+  } = useContext(MyContext);
+  const handleClick = (valor) => {
+    console.log("entre");
+    console.log("first", valor);
+    setIsLoadingGrilla(false);
+    setFiltros({ ...filtros, order_by: valor });
+    ReadAPI();
+    setIsLoadingGrilla(true);
   };
   return (
     <div
@@ -28,20 +33,15 @@ const CabeceraGrilla = ({ cantidadLibros }) => {
         <select
           className="form-select form-select-sm"
           aria-label="Small select example"
+          onChange={(e) => handleClick(e.target.value)}
         >
-          <option selected>Ordenar por</option>
-          <option value="1" onClick={handleClick("precio-menor")}>
-            precio menor
+          <option value="titulo_ASC" selected>
+            Ordenar por
           </option>
-          <option value="2" onClick={handleClick("precio-mayor")}>
-            precio mayor
-          </option>
-          <option value="3" onClick={handleClick("asc")}>
-            Titulo a-z
-          </option>
-          <option value="4" onClick={handleClick("desc")}>
-            Titulo z-a
-          </option>
+          <option value="precio_ASC">precio menor</option>
+          <option value="precio_DESC">precio mayor</option>
+          <option value="titulo_ASC">Titulo a-z</option>
+          <option value="titulo_DESC">Titulo z-a</option>
         </select>
       </div>
     </div>
