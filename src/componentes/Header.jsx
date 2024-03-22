@@ -9,12 +9,27 @@ import Search from "./Search.jsx";
 const Header = ({
   ishome = true,
   isSearch = true,
-  isCarrito = true,
-  isAdmin = true,
-  isUser = true,
+  isCarrito = false,
+  isAdmin = false,
+  isUser = false,
 }) => {
-  const { carro, setCarro, setProductos, setIsLoading, setLibrosFiltrados } =
-    useContext(MyContext);
+  const { carro } = useContext(MyContext);
+
+  if (window.sessionStorage.getItem("rol")) {
+    // Restaura el contenido al campo de texto
+    const rolUsuario = window.sessionStorage.getItem("rol");
+    //console.log("Rol usuario:", rolUsuario);
+    isAdmin = false;
+    isUser = false;
+    if (rolUsuario === "admin") {
+      isAdmin = true;
+      isCarrito = true;
+    }
+    if (rolUsuario === "usuario") {
+      isUser = true;
+      isCarrito = true;
+    }
+  }
 
   return (
     <>
@@ -76,44 +91,51 @@ const Header = ({
                     </li>
                   )}
                   {isAdmin && (
-                    <li className="nav-item">
+                    <li className="nav-item dropdown">
                       <Link to="/Admin">
                         <i className="fa-solid fa-gear"></i>
                       </Link>
                     </li>
                   )}
-                  {isUser && (
-                    <li className="nav-item dropdown">
-                      <i
-                        className="fa-solid fa-user "
-                        data-bs-toggle="dropdown"
-                        data-bs-display="static"
-                        aria-expanded="false"
-                      ></i>
-                      <ul className="dropdown-menu dropdown-menu-end ">
+
+                  <li className="nav-item dropdown">
+                    <i
+                      className="fa-solid fa-user "
+                      data-bs-toggle="dropdown"
+                      data-bs-display="static"
+                      aria-expanded="false"
+                    ></i>
+                    <ul className="dropdown-menu dropdown-menu-end ">
+                      {!isUser && (
                         <li>
                           <Link className="dropdown-item" to={"/Login"}>
                             Login
                           </Link>
                         </li>
+                      )}
+                      {!isUser && (
                         <li>
                           <Link className="dropdown-item" to={"/Registro"}>
                             Crear cuenta
                           </Link>
                         </li>
+                      )}
+                      {isUser && (
                         <li>
                           <Link className="dropdown-item" to={"/MiCuenta"}>
                             Mi Cuenta
                           </Link>
                         </li>
+                      )}
+                      {(isUser || isAdmin) && (
                         <li>
                           <Link className="dropdown-item" to={"/CerrarSesion"}>
                             Cerrar Sesion
                           </Link>
                         </li>
-                      </ul>
-                    </li>
-                  )}
+                      )}
+                    </ul>
+                  </li>
                 </ul>
               </div>
             </div>

@@ -18,25 +18,25 @@ const SideCart = (props) => {
   } = useContext(MyContext);
 
   function quitarItemCarro(obj) {
-    setCarro(carro.filter((item) => item.id !== obj.id));
+    setCarro(carro.filter((item) => item.id_libro !== obj.id_libro));
     setTotal(Number(total) - Number(obj.qty) * Number(obj.precio));
   }
   function restarUnidadItemCarro(obj) {
-    const indice = carro.findIndex((item) => item.id === obj.id);
+    const indice = carro.findIndex((item) => item.id_libro === obj.id_libro);
     if (carro[indice].qty > 1) {
       setTotal(Number(total) - Number(obj.precio));
       carro[indice].qty = Number(obj.qty) - 1;
-      console.log("carro antes de eliminar", carro);
+      //console.log("carro antes de eliminar", carro);
       setCarro([...carro]);
     } else {
       quitarItemCarro(obj);
     }
   }
   function sumarUnidadItemCarro(obj) {
-    const indice = carro.findIndex((item) => item.id === obj.id);
+    const indice = carro.findIndex((item) => item.id_libro === obj.id_libro);
     setTotal(Number(total) + Number(obj.precio));
     carro[indice].qty = Number(obj.qty) + 1;
-    console.log("carro antes de eliminar", carro);
+    //console.log("carro antes de eliminar", carro);
     setCarro([...carro]);
   }
   const navigate = useNavigate();
@@ -97,7 +97,7 @@ const SideCart = (props) => {
               >
                 <img
                   className="img-fluid w-25"
-                  src={prefijoImagen + libro.urlimg}
+                  src={libro.urlimagen}
                   alt="microfono"
                 />
                 <div className="d-flex ms-2  w-75 flex-column justify-content-start align-items-start ">

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { MyContext } from "../componentes/context/MyContext.jsx";
@@ -15,26 +15,75 @@ const CheckOut = (props) => {
     total,
     setTotal,
     formatPrecio,
-    prefijoImagen,
+    usuario,
+    setUsuario,
+    setMensajeRegistro,
+    mensajeRegistro,
+    orden,
+    setOrden,
   } = useContext(MyContext);
-  const [totalOrden, setTotalOrden] = useState(total + 4500);
-  const usuario = [
-    {
-      id: 1,
-      nombre: "Marcelo Salas",
-      email: "MarceloSalas@lazio.it",
-      direccion: "San Martin 1234, Renca",
-      ciudad: "Santiago",
-    },
-  ];
-  const handleTipoEnvio = (valor) => {
-    setTotalOrden(total + valor);
+  const [envio, setEnvio] = useState(4500);
+  const [totalOrden, setTotalOrden] = useState(total + envio);
+
+  useEffect(() => {
+    handleTipoEnvio();
+  }, [envio]);
+  const handleTipoEnvio = () => {
+    //console.log("envio", envio);
+    setTotalOrden(total + envio);
   };
   const navigate = useNavigate();
   function handlePago() {
-    setCarro([]);
-    setTotal(0);
-    navigate(`/Pago`);
+    llamarAPIPago();
+    //setCarro([]);
+    //setTotal(0);
+    //navigate(`/Pago`);
+  }
+
+  async function llamarAPIPago() {
+    try {
+      const token = window.sessionStorage.getItem("token");
+      console.log("carro checkout: ", carro);
+      console.log("token checkout: ", token);
+      const response = await fetch(
+        "http://localhost:3000/ordenes",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(carro),
+          params: {
+            total: total,
+            envio: envio,
+          },
+        } //+ user
+      );
+      const data = await response.json();
+
+      if (data.status !== "Bad Request") {
+        //console.log("data ordenes", data);
+        setOrden(data.id_orden);
+        setMensajeRegistro({
+          mensaje: "Orden creada con exito 😀",
+          tipo: "alert alert-success",
+          open: true,
+        });
+        //setCarro([]);
+        //setTotal(0);
+        navigate("/pago");
+      } else {
+        setMensajeRegistro({
+          mensaje: data.message,
+          tipo: "alert alert-danger",
+          open: true,
+        });
+        //console.log(mensaje);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -47,21 +96,21 @@ const CheckOut = (props) => {
             <div className="div d-flex gap-5">
               <div className="div d-flex flex-column">
                 <h2 className="fs-6">Nombre </h2>
-                <span className="fw-light">{usuario[0].nombre}</span>
+                <span className="fw-light">{usuario.nombre}</span>
               </div>
               <div className="div d-flex flex-column">
                 <h2 className="fs-6">Email </h2>
-                <span className="fw-light">{usuario[0].email}</span>
+                <span className="fw-light">{usuario.email}</span>
               </div>
             </div>
             <div className="div d-flex gap-5">
               <div className="div d-flex flex-column">
                 <h2 className="fs-6">Dirección </h2>
-                <span className="fw-light">{usuario[0].direccion}</span>
+                <span className="fw-light">{usuario.direccion}</span>
               </div>
               <div className="div d-flex flex-column">
                 <h2 className="fs-6">Ciudad </h2>
-                <span className="fw-light">{usuario[0].ciudad}</span>
+                <span className="fw-light">{usuario.ciudad}</span>
               </div>
             </div>
           </div>
@@ -100,7 +149,7 @@ const CheckOut = (props) => {
                     name="tipo-envio"
                     id="envio-normal"
                     checked
-                    onClick={() => handleTipoEnvio(4500)}
+                    onClick={() => setEnvio(4500)}
                   />
                   <label className="form-check-label" htmlFor="envio-normal">
                     envío normal: $4.500
@@ -112,7 +161,7 @@ const CheckOut = (props) => {
                     type="radio"
                     name="tipo-envio"
                     id="envio-express"
-                    onClick={() => handleTipoEnvio(9990)}
+                    onClick={() => setEnvio(9990)}
                   />
                   <label className="form-check-label" htmlFor="envio-express">
                     envío express: $9.990

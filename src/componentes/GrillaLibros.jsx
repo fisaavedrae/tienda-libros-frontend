@@ -8,18 +8,11 @@ import Filtros from "./Filtros.jsx";
 import CabeceraGrilla from "./CabeceraGrilla.jsx";
 import Spinner from "./Spinner.jsx";
 
-const GrillaLibros = (props) => {
+const GrillaLibros = () => {
   const {
-    setProductos,
     productos,
-    librosFiltrados,
-    setLibrosFiltrados,
-    setOpenVistaRapida,
-    idProductoVistaRapida,
-    setIdProductoVistaRapida,
     agregarCarrito,
     formatPrecio,
-    filtros,
     ReadAPI,
     isLoadingGrilla,
     setIsLoadingGrilla,
@@ -34,7 +27,7 @@ const GrillaLibros = (props) => {
   useEffect(() => {
     cargarDatos();
   }, []);
-
+  //console.log("productos: ", productos);
   const cargarDatos = () => {
     setIsLoadingGrilla(false);
     ReadAPI();

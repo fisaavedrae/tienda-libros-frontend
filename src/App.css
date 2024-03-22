@@ -37,8 +37,10 @@ body {
   color: rgb(221, 217, 217);
   text-shadow: 0px 0px 10px white;
 }
-#icono-lupa {
+#icono-lupa,
+#icono-lupa:hover {
   color: white;
+  cursor: pointer;
 }
 #circuloCarro {
   background-color: rgb(245, 164, 106);
