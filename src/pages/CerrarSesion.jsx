@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Header from "../componentes/Header";
 import Footer from "../componentes/Footer";
 const CerrarSesion = (props) => {
+  window.sessionStorage.clear();
   return (
     <>
       <Header />

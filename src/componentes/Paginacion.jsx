@@ -6,23 +6,14 @@ import "../assets/css/paginacion.css";
 
 const Paginacion = ({ cantidadLibros }) => {
   const {
-    total,
-    setTotal,
-    productos,
-    carro,
-    setCarro,
-    prefijoImagen,
-    formatPrecio,
-    agregarCarrito,
     filtros,
-    setCurrentPage,
-    currentPage,
+
     setFiltros,
     ReadAPI,
   } = useContext(MyContext);
 
   const paginationNumbers = [];
-  console.log("cantidadLibros", cantidadLibros);
+  //console.log("cantidadLibros", cantidadLibros);
   for (let i = 1; i <= Math.ceil(cantidadLibros / filtros.limits); i++) {
     paginationNumbers.push(i);
   }

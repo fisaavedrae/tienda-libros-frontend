@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { MyContext } from "./componentes/context/MyContext.jsx";
 import "./App.css";
@@ -33,6 +33,8 @@ function App() {
   const [prefijoImagen, setPrefijoImagen] = useState(
     "https://fidatech.net/felipe/fotos-libros/"
   );
+  const [buscador, setBuscador] = useState("");
+  const [orden, setOrden] = useState(0);
   const [filtros, setFiltros] = useState({
     id_autor: "-1",
     id_editorial: "-1",
@@ -42,10 +44,30 @@ function App() {
     limits: 6,
     page: 1,
   });
+  const [usuario, setUsuario] = useState({
+    id_usuario: 0,
+    nombre: "",
+    email: "",
+    direccion: "",
+    ciudad: "",
+    token: "",
+  });
+
+  const limpiarFiltros = () => {
+    setFiltros({
+      id_autor: "-1",
+      id_editorial: "-1",
+      id_genero: "-1",
+      maxPrice: 100000,
+      order_by: "titulo_ASC",
+      limits: 6,
+      page: 1,
+    });
+  };
 
   const agregarCarrito = (cant, obj) => {
     setTotal(Number(total) + Number(cant) * Number(obj.precio));
-    const indice = carro.findIndex((item) => item.id === obj.id);
+    const indice = carro.findIndex((item) => item.id_libro === obj.id_libro);
 
     if (indice !== -1) {
       carro[indice].qty = Number(obj.qty) + Number(cant);
@@ -62,7 +84,10 @@ function App() {
     const precioCLP = new Intl.NumberFormat("es-CL").format(precio);
     return "$ " + precioCLP;
   };
-
+  useEffect(() => {
+    ReadAPI();
+    //console.log("entre al useefect");
+  }, [filtros]);
   async function ReadAPI() {
     //console.log("voy a leer api");
     try {
@@ -86,22 +111,20 @@ function App() {
         "http://localhost:3000/libros/filtros?" + parametros
       );
       const data = await response.json();
-      console.log(data);
+      //console.log("order:", filtros.order_by);
+      //console.log(data);
       if (data.status !== "Bad Request") {
-        setMensaje;
-        console.log("erorro");
-        console.log("data", data);
+        //console.log("data", data);
         setMensaje("");
         setProductos(data);
       } else {
         setProductos("");
 
         setMensaje(data.message);
-        console.log(mensaje);
+        //console.log(mensaje);
       }
 
       //setProductos(jsonLibros);
-      //setLibrosFiltrados(jsonLibros);
     } catch (error) {
       console.log(error);
     }
@@ -142,6 +165,13 @@ function App() {
           mensaje,
           currentPage,
           setCurrentPage,
+          buscador,
+          setBuscador,
+          limpiarFiltros,
+          usuario,
+          setUsuario,
+          orden,
+          setOrden,
         }}
       >
         <Routes>

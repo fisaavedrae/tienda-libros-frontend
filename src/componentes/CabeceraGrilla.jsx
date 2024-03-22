@@ -16,11 +16,11 @@ const CabeceraGrilla = ({ cantidadLibros }) => {
     setIsLoadingGrilla,
   } = useContext(MyContext);
   const handleClick = (valor) => {
-    console.log("entre");
-    console.log("first", valor);
+    //console.log("entre");
+    //console.log("valor", valor);
     setIsLoadingGrilla(false);
     setFiltros({ ...filtros, order_by: valor });
-    ReadAPI();
+    //ReadAPI();
     setIsLoadingGrilla(true);
   };
   return (
@@ -35,7 +35,7 @@ const CabeceraGrilla = ({ cantidadLibros }) => {
           aria-label="Small select example"
           onChange={(e) => handleClick(e.target.value)}
         >
-          <option value="titulo_ASC" selected>
+          <option value="titulo_ASC" defaultValue={true}>
             Ordenar por
           </option>
           <option value="precio_ASC">precio menor</option>

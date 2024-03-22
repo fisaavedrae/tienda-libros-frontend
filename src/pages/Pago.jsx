@@ -17,6 +17,7 @@ const Pago = (props) => {
     setTotal,
     formatPrecio,
     prefijoImagen,
+    orden,
   } = useContext(MyContext);
 
   function handleCheckout() {}
@@ -26,7 +27,7 @@ const Pago = (props) => {
       <div className="container">
         <div className="container mt-5 mb-5 text-center align-items-center">
           <div className=" orden-creada">
-            <h2>Se ha generado la orden N° 00000012</h2>
+            <h2>Se ha generado la orden N° {orden}</h2>
             <p>Gracias por su compra</p>
           </div>
         </div>
