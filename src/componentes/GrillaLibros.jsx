@@ -49,12 +49,14 @@ const GrillaLibros = () => {
             <CabeceraGrilla cantidadLibros={productos.length} />
             <div className="row row-cols-1 row-cols-md-3 g-4">
               {!isLoadingGrilla && <Spinner />}
-              {mensaje !== "" && (
+              {cantidadLibros === 0 && (
                 <div className="container text-center items-center mt-5 mb-5">
-                  <div className="alert alert-warning">{mensaje}</div>
+                  <div className="alert alert-warning">
+                    No hay coincidencia de libros
+                  </div>
                 </div>
               )}
-              {mensaje === "" &&
+              {cantidadLibros !== 0 &&
                 productos.map((product, index) => (
                   <div key={index} className="col">
                     <div className="card">

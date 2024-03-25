@@ -5,7 +5,7 @@
     "total": 20000,
     "libros": [
       {
-        "urlimg": "cien-anios-de-soledad.jpg",
+        "urlimagen": "cien-anios-de-soledad.jpg",
         "titulo": "Cien años de soledad",
         "precio": 20000,
         "cantidad": 2

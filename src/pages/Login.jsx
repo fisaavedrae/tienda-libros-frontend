@@ -1,7 +1,5 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { MyContext } from "../componentes/context/MyContext.jsx";
-import PropTypes from "prop-types";
 import Header from "../componentes/Header";
 import Footer from "../componentes/Footer";
 import "../assets/css/form.css";
@@ -9,7 +7,7 @@ import "../assets/css/form.css";
 const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 const initialForm = { email: "", password: "" };
 
-const Login = (props) => {
+const Login = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(initialForm);
   const [mensajeRegistro, setMensajeRegistro] = useState({
