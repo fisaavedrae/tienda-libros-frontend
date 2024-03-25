@@ -1,23 +1,13 @@
 import { useContext, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { MyContext } from "../componentes/context/MyContext.jsx";
-import PropTypes from "prop-types";
+
 import Header from "../componentes/Header";
 import Footer from "../componentes/Footer";
 import "../assets/css/form.css";
-import Paginacion from "../componentes/Paginacion.jsx";
 
-const DetalleLibro = (props) => {
-  const {
-    total,
-    setTotal,
-    productos,
-    carro,
-    setCarro,
-    prefijoImagen,
-    formatPrecio,
-    agregarCarrito,
-  } = useContext(MyContext);
+const DetalleLibro = () => {
+  const { productos, formatPrecio, agregarCarrito } = useContext(MyContext);
   const { id } = useParams();
   const [cant, setCant] = useState(1);
   const [error, setError] = useState(false);
@@ -35,8 +25,6 @@ const DetalleLibro = (props) => {
     }
   };
 
-  // console.log("id", id);
-  //console.log(productos);
   return (
     <>
       <Header />

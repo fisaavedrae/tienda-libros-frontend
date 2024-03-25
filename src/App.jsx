@@ -15,7 +15,7 @@ import Admin from "./pages/Admin.jsx";
 import CheckOut from "./pages/CheckOut.jsx";
 import MyAccount from "./pages/MyAccount.jsx";
 
-import jsonLibros from "./assets/libros.json";
+//import jsonLibros from "./assets/libros.json";
 
 function App() {
   const [total, setTotal] = useState(0);
@@ -28,13 +28,14 @@ function App() {
   const [openVistaRapida, setOpenVistaRapida] = useState(false);
   const [idProductoVistaRapida, setIdProductoVistaRapida] = useState(10);
   const [isLoadingGrilla, setIsLoadingGrilla] = useState(false);
-  const [mensaje, setMensaje] = useState("");
+
   const [currentPage, setCurrentPage] = useState(1);
   const [prefijoImagen, setPrefijoImagen] = useState(
     "https://fidatech.net/felipe/fotos-libros/"
   );
   const [buscador, setBuscador] = useState("");
   const [orden, setOrden] = useState(0);
+  const [detalleOrden, setDetalleOrden] = useState([]);
   const [filtros, setFiltros] = useState({
     id_autor: "-1",
     id_editorial: "-1",
@@ -51,6 +52,11 @@ function App() {
     direccion: "",
     ciudad: "",
     token: "",
+  });
+  const [mensaje, setMensaje] = useState({
+    mensaje: "",
+    tipo: "",
+    open: false,
   });
 
   const limpiarFiltros = () => {
@@ -118,7 +124,7 @@ function App() {
         setMensaje("");
         setProductos(data);
       } else {
-        setProductos("");
+        setProductos(""); //
 
         setMensaje(data.message);
         //console.log(mensaje);
@@ -163,6 +169,7 @@ function App() {
           setIsLoadingGrilla,
           ReadAPI,
           mensaje,
+          setMensaje,
           currentPage,
           setCurrentPage,
           buscador,
@@ -172,6 +179,8 @@ function App() {
           setUsuario,
           orden,
           setOrden,
+          detalleOrden,
+          setDetalleOrden,
         }}
       >
         <Routes>

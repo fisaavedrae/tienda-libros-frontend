@@ -1,19 +1,18 @@
-import PropTypes from "prop-types";
 import { useContext, useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { MyContext } from "../componentes/context/MyContext.jsx";
 import Header from "../componentes/Header";
 import Footer from "../componentes/Footer";
 
-const MyAccount = (props) => {
+const MyAccount = () => {
   const { usuario, setUsuario } = useContext(MyContext);
   const [mensajeRegistro, setMensajeRegistro] = useState({
     mensaje: "",
     tipo: "",
     open: false,
   });
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
   //console.log("token: ", window.sessionStorage.getItem("token"));
   useEffect(() => {
     getUsuario();
@@ -22,6 +21,11 @@ const MyAccount = (props) => {
   async function getUsuario() {
     try {
       const token = window.sessionStorage.getItem("token");
+      //console.log("token", token);
+      if (!token) {
+        console.log("no hay token");
+        navigate("/home");
+      }
       //console.log("token micuenta: ", token);
       const response = await fetch(
         "http://localhost:3000/usuarios/id",
@@ -34,7 +38,7 @@ const MyAccount = (props) => {
         } //+ user
       );
       const data = await response.json();
-      console.log(data);
+      //console.log(data);
       if (data.status !== "Bad Request") {
         sessionStorage.setItem("email", data[0].email);
         sessionStorage.setItem("rol", data[0].rol);
@@ -46,7 +50,7 @@ const MyAccount = (props) => {
           ciudad: data[0].ciudad,
           token: data[0].token,
         });
-        console.log(usuario);
+        //console.log(usuario);
       } else {
         setMensajeRegistro({
           mensaje: data.message,

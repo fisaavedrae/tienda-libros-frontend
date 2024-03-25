@@ -1,25 +1,18 @@
-import PropTypes from "prop-types";
 import { useContext, useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { MyContext } from "../componentes/context/MyContext.jsx";
 
 import Header from "../componentes/Header";
 import Footer from "../componentes/Footer";
-const CheckOut = (props) => {
+const CheckOut = () => {
   const {
-    productos,
-    setProductos,
     carro,
     setCarro,
     total,
     setTotal,
     formatPrecio,
     usuario,
-    setUsuario,
-    setMensajeRegistro,
-    mensajeRegistro,
-    orden,
+
     setOrden,
   } = useContext(MyContext);
   const [envio, setEnvio] = useState(4500);
@@ -35,18 +28,16 @@ const CheckOut = (props) => {
   const navigate = useNavigate();
   function handlePago() {
     llamarAPIPago();
-    //setCarro([]);
-    //setTotal(0);
-    //navigate(`/Pago`);
   }
 
   async function llamarAPIPago() {
     try {
       const token = window.sessionStorage.getItem("token");
-      console.log("carro checkout: ", carro);
-      console.log("token checkout: ", token);
+      //console.log("carro checkout: ", carro);
+      //console.log("token checkout: ", token);
+
       const response = await fetch(
-        "http://localhost:3000/ordenes",
+        "http://localhost:3000/ordenes?total=" + totalOrden + "&envio=" + envio,
         {
           method: "POST",
           headers: {
@@ -54,32 +45,19 @@ const CheckOut = (props) => {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(carro),
-          params: {
-            total: total,
-            envio: envio,
-          },
         } //+ user
       );
+      //console.log("response checkout: ", response);
       const data = await response.json();
 
       if (data.status !== "Bad Request") {
         //console.log("data ordenes", data);
         setOrden(data.id_orden);
-        setMensajeRegistro({
-          mensaje: "Orden creada con exito 😀",
-          tipo: "alert alert-success",
-          open: true,
-        });
-        //setCarro([]);
-        //setTotal(0);
+        setCarro([]);
+        setTotal(0);
         navigate("/pago");
       } else {
-        setMensajeRegistro({
-          mensaje: data.message,
-          tipo: "alert alert-danger",
-          open: true,
-        });
-        //console.log(mensaje);
+        console.log("mensaje de error: ", data.message);
       }
     } catch (error) {
       console.log(error);

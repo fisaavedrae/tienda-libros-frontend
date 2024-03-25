@@ -1,26 +1,13 @@
-import PropTypes from "prop-types";
-import { useContext, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+
 import { MyContext } from "../componentes/context/MyContext.jsx";
 import "../assets/css/carro.css";
 import Header from "../componentes/Header";
 import Footer from "../componentes/Footer";
 
-const Pago = (props) => {
-  const {
-    productos,
-    setProductos,
-    carro,
-    setCarro,
-    total,
-    setTotal,
-    formatPrecio,
-    prefijoImagen,
-    orden,
-  } = useContext(MyContext);
+const Pago = () => {
+  const { orden } = useContext(MyContext);
 
-  function handleCheckout() {}
   return (
     <>
       <Header />
@@ -36,7 +23,5 @@ const Pago = (props) => {
     </>
   );
 };
-
-Pago.propTypes = {};
 
 export default Pago;
