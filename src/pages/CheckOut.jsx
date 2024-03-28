@@ -33,7 +33,7 @@ const CheckOut = () => {
   async function llamarAPIPago() {
     try {
       const token = window.sessionStorage.getItem("token");
-      //console.log("carro checkout: ", carro);
+      console.log("carro checkout: ", carro);
       //console.log("token checkout: ", token);
 
       const response = await fetch(
